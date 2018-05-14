@@ -80,7 +80,6 @@ public class WeaponScript : MonoBehaviour
         Instantiate(BulletTrailPrefab, firePoint.position, firePoint.rotation);
         Transform clone = Instantiate(MuzzleFlashPrefab, firePoint.position, firePoint.rotation);
         clone.parent = firePoint;
-        Random r = new Random();
         float size = 0.01f * new Random().Next(60, 90);
         clone.localScale = new Vector3(size, size, size);
         Destroy(clone.gameObject, 0.02f);

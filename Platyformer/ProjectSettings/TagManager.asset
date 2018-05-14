@@ -7,6 +7,7 @@ TagManager:
   - GroundCheck
   - CeilingCheck
   - Point
+  - GameMaster
   layers:
   - Default
   - TransparentFX
