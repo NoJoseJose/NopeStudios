@@ -331,9 +331,10 @@ MonoBehaviour:
   fireDistance: 100
   ToHit:
     serializedVersion: 2
-    m_Bits: 4294967035
-  BulletTrailPrefab: {fileID: 4514928282641666, guid: 0835c516f27b16d4dbc12421f1b0205a,
+    m_Bits: 4294966779
+  BulletTrailPrefab: {fileID: 4120357891538696, guid: d6c78af64a7be454295d9ce7381e96f1,
     type: 2}
+  HitPrefab: {fileID: 4967948043763916, guid: 64a5ae152b0957b44a7d81a6a43aec45, type: 2}
   MuzzleFlashPrefab: {fileID: 4967948043763916, guid: 64a5ae152b0957b44a7d81a6a43aec45,
     type: 2}
   effectSpawnRate: 10
