@@ -97,12 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616b7775f34a5e141a601784b150ff5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 4496214158823524, guid: e18e49ac7fd68bd4b8004aef04ead8b7,
+  PlayerPrefab: {fileID: 4050937932689502, guid: e18e49ac7fd68bd4b8004aef04ead8b7,
     type: 2}
   SpawnPoint: {fileID: 4200396623844940, guid: e2cfbcbcfdbc29d40abd6364487b93bd, type: 2}
-  SpawnDelay: 1
+  SpawnDelay: 4
   killParticlesTime: 3
   SpawnPrefab: {fileID: 4194365864190664, guid: 38b6ed9e075d4d64191d929c31d1fe8c,
     type: 2}
-  RespawnAudio: {fileID: 0}
+  RespawnAudio: {fileID: 8300000, guid: 1bfaf4b9444dcb044b511a8e2fe2dc40, type: 3}
   RespawnAudioVolume: 0.5

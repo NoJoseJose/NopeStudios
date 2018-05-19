@@ -66,11 +66,12 @@ public class EnemyAI : MonoBehaviour
         PathIsEnded = false;
 
         if (_currentWaypoint >= Path.vectorPath.Count)
-        {
-            Vector3 dir = (Path.vectorPath[_currentWaypoint] - transform.position).normalized;
-            dir *= Speed * Time.fixedDeltaTime;
-            _rb.AddForce(dir, FMode);
-        }
+            return;
+
+        Vector3 dir = (Path.vectorPath[_currentWaypoint] - transform.position).normalized;
+        dir *= Speed * Time.fixedDeltaTime;
+        _rb.AddForce(dir, FMode);
+
 
         float dist = Vector3.Distance(transform.position, Path.vectorPath[_currentWaypoint]);
         if (dist < NextWaypointDistance)

@@ -5,20 +5,55 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public class EnemyStats
+    public EnemyStats stats = new EnemyStats();
+
+    [Header("Optional: ")]
+    [SerializeField] private StatusIndicator _statusIndicator;
+
+    void Start()
     {
-        public int Health = 100;
+        SetIndicatorHealth();
     }
 
-    public Player.EnemyStats stats = new Player.EnemyStats();
+    [Serializable]
+    public class EnemyStats
+    {
+        public EnemyStats()
+        {
+            CurrentHealth = MaxHealth;
+        }
+        public int MaxHealth = 100;
+        public int CurrentHealth
+        {
+            get
+            {
+                return _currentHealth;
+            }
+            set
+            {
+                _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+            }
+        }
+        private int _currentHealth;
+    }
+
+    private void SetIndicatorHealth()
+    {
+
+        if (_statusIndicator != null)
+        {
+            _statusIndicator.SetHealth(stats.CurrentHealth, stats.MaxHealth);
+        }
+    }
 
     public void DamageEnemy(int damage)
     {
-        stats.Health -= damage;
-        if (stats.Health <= 0)
+        stats.CurrentHealth -= damage;
+        if (stats.CurrentHealth <= 0)
         {
             GameMaster.gm.KillEnemy(this);
         }
+        SetIndicatorHealth();
     }
 
 }
