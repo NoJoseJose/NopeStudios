@@ -6,17 +6,33 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int fallBoundary = -20;
-    public class EnemyStats
+    public class PlayerStats
     {
-        public float Health = 100f;
+        public PlayerStats()
+        {
+            CurrentHealth = MaxHealth;
+        }
+        public int MaxHealth = 100;
+        public int CurrentHealth
+        {
+            get
+            {
+                return _currentHealth;
+            }
+            set
+            {
+                _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+            }
+        }
+        private int _currentHealth;
     }
 
-    public EnemyStats ps = new EnemyStats();
+    public PlayerStats ps = new PlayerStats();
 
     public void DamagePlayer(int damage)
     {
-        ps.Health -= damage;
-        if (ps.Health <= 0)
+        ps.CurrentHealth -= damage;
+        if (ps.CurrentHealth <= 0)
         {
             GameMaster.gm.KillPlayer(this);
         }
