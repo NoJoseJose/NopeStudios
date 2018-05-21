@@ -16,11 +16,13 @@ public class Throwable : MonoBehaviour
 	    if (!_hasBeenThrown && Input.GetKeyDown(KeyCode.Mouse0))
 	    {
 	        Rigidbody rb = GetComponent<Rigidbody>();
+	        Collider cd = GetComponent<Collider>();
             Debug.Log($"Throwing {rb.name}");
 	        _hasBeenThrown = true;
-	        rb.isKinematic = true;
+	        rb.isKinematic = false;
 	        rb.useGravity = true;
-            rb.velocity = 100*Vector3.forward;
+            rb.velocity = 10*Vector3.forward;
+	        //cd.enabled = true;
 	    }
 	}
 }
