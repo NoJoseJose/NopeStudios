@@ -448,30 +448,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 54068321117327456, guid: 3287874e9e90d6b43acb683507692953,
+    - target: {fileID: 114063232187003362, guid: 3287874e9e90d6b43acb683507692953,
         type: 2}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54068321117327456, guid: 3287874e9e90d6b43acb683507692953,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54068321117327456, guid: 3287874e9e90d6b43acb683507692953,
-        type: 2}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 136319857183975468, guid: 3287874e9e90d6b43acb683507692953,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1664338562989316, guid: 3287874e9e90d6b43acb683507692953, type: 2}
-      propertyPath: m_TagString
-      value: ThrowingHand
-      objectReference: {fileID: 0}
+      propertyPath: HandPosition
+      value: 
+      objectReference: {fileID: 683966987}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3287874e9e90d6b43acb683507692953, type: 2}
   m_IsPrefabParent: 0
