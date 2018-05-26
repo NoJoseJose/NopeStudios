@@ -130,7 +130,7 @@ public class NetworkPlayer : NetworkMessageHandler
     {
         var y = Input.GetAxis("Horizontal") * Time.deltaTime * 20;
         var x = Input.GetAxis("Vertical") * Time.deltaTime * 20;
-        //var z = Input.GetAxis("Rotational") * Time.deltaTime * 20;
+        var z = 0.0f;//Input.GetAxis("Rotational") * Time.deltaTime * 20;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
@@ -148,9 +148,9 @@ public class NetworkPlayer : NetworkMessageHandler
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        if (y != 0 || x != 0)// || z != 0)
+        if (y != 0 || x != 0 || z != 0)
         {
-            //transform.Rotate(x, y, -z);
+            transform.Rotate(x, y, -z);
             transform.Rotate(x, y, 0);
         }
 
