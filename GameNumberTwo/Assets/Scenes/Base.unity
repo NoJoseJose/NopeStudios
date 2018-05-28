@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 142214227}
   - component: {fileID: 142214226}
   - component: {fileID: 142214225}
+  - component: {fileID: 142214229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -194,6 +195,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+--- !u!114 &142214229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142214224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee542dba2a75ef84bae9718d6d974b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 197305769}
+  damping: 5
+  lookAheadFactor: 10
+  lookAheadReturnSpeed: 5
+  lookAheadMoveThreshold: 10
+  MaxCameraYPos: 15
+  MinCameraYPos: 15
+--- !u!4 &197305769 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4702489298480006, guid: 8b8392d6f395c1045b69d8c77323dd98,
+    type: 2}
+  m_PrefabInternal: {fileID: 1575785342}
 --- !u!1 &895359834
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +426,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1556280648403606, guid: 8b8392d6f395c1045b69d8c77323dd98, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1556280648403606, guid: 8b8392d6f395c1045b69d8c77323dd98, type: 2}
       propertyPath: m_Name
@@ -527,6 +551,10 @@ Prefab:
     - target: {fileID: 1574618666459042, guid: 8b8392d6f395c1045b69d8c77323dd98, type: 2}
       propertyPath: m_TagString
       value: ThrowingHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593603475004812, guid: 8b8392d6f395c1045b69d8c77323dd98, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b8392d6f395c1045b69d8c77323dd98, type: 2}
