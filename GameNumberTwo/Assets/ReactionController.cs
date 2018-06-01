@@ -16,7 +16,8 @@ public class ReactionController : MonoBehaviour {
     public float Kp = 1.0f;
     public float Ki = 0.0f;
     public float Kd = 0.0f;
-    Vector3 lastError;
+    Vector3 lastPos;
+    Vector3 lastError = Vector3.zero;
     Vector3 P, I, D, seekDifference = Vector3.zero;
     public bool isPlayer = false;
 
@@ -28,8 +29,10 @@ public class ReactionController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        
-        P = (desiredVelocity - mainBody.velocity);
+
+        var velocity = (mainBody.position - lastPos) / Time.fixedDeltaTime;
+        lastPos = mainBody.position;
+        P = (desiredVelocity - velocity);
         P.y = 0f;
 
         I += P * Time.fixedDeltaTime;

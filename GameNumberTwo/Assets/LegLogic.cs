@@ -7,6 +7,7 @@ public class LegLogic : MonoBehaviour {
     public Rigidbody hip; //or whatever is the platform we're moving in relation to
     public float legPeriod = 1.0f;
     public float legTick = 0;
+    public float legSearchDist = 2.0f;
 
     //public GameObject l1, l2, l3, l4;
     //public GameObject r1, r2, r3, r4;
@@ -19,7 +20,8 @@ public class LegLogic : MonoBehaviour {
 	void Start () {
         leftTarget = this.transform.InverseTransformDirection(hip.position - leftLeg.points[3].transform.position);
         rightTarget = this.transform.InverseTransformDirection(hip.position - rightLeg.points[3].transform.position);
-        //rightLeg.points[3].transform.position;
+        
+
     }
 	
 	// Update is called once per frame
@@ -49,13 +51,24 @@ public class LegLogic : MonoBehaviour {
 
         if (leftActive)
         {
-            leftLeg.points[3].transform.position = hip.position - hip.transform.TransformDirection(leftTarget) + hip.velocity * legPeriod; //ongoing leg update
+            RaycastHit hit;
+            if (Physics.Raycast(hip.position, -hip.transform.TransformDirection(leftTarget) + hip.velocity * legPeriod, out hit, legSearchDist, LayerMask.GetMask("Ground")))
+            {
+                leftLeg.points[3].transform.position = hit.point;
+            }
+
+            //leftLeg.points[3].transform.position = hip.position - hip.transform.TransformDirection(leftTarget) + hip.velocity * legPeriod; //ongoing leg update
+
             leftLeg.UpdateLeg(legTick/legPeriod);
         }
         if(rightActive)
         {
-
-            rightLeg.points[3].transform.position = hip.position - hip.transform.TransformDirection(rightTarget) + hip.velocity * legPeriod;
+            RaycastHit hit;
+            if (Physics.Raycast(hip.position, -hip.transform.TransformDirection(rightTarget) + hip.velocity * legPeriod, out hit, legSearchDist, LayerMask.GetMask("Ground")))
+            {
+                rightLeg.points[3].transform.position = hit.point;
+            }
+            //rightLeg.points[3].transform.position = hip.position - hip.transform.TransformDirection(rightTarget) + hip.velocity * legPeriod;
             rightLeg.UpdateLeg(legTick / legPeriod);
         }
 
@@ -69,9 +82,11 @@ public class LegLogic : MonoBehaviour {
     {
         if (hip)
         {
+
             Gizmos.color = Color.black;
-            Gizmos.DrawRay(hip.transform.position, hip.velocity * legPeriod);
-            
+            Gizmos.DrawRay(hip.transform.position, -hip.transform.TransformDirection(leftTarget));
+            Gizmos.DrawRay(hip.transform.position, -hip.transform.TransformDirection(rightTarget));
+
         }
     }
 }
