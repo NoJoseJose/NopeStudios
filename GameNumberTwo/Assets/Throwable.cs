@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
 public class Throwable : MonoBehaviour
 {
     private bool _hasBeenThrown;
+    private bool _canStartThrow;
     public Transform HandPosition;
     public float ThrowableTimeout = 5f;
 
@@ -17,38 +19,45 @@ public class Throwable : MonoBehaviour
 	    rb.useGravity = false;
 	    rb.velocity = new Vector3(0, 0, 0);
     }
+
+    void Update()
+    {
+        if (!_hasBeenThrown && Input.GetKeyDown(KeyCode.Mouse0))
+            _canStartThrow = true;
+    }
 	
-	void Update () 
+	void FixedUpdate () 
 	{
-	    if (!_hasBeenThrown && Input.GetKeyDown(KeyCode.Mouse0))
-	    {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            Debug.Log($"Throwing {rb.name}");
-            Destroy(gameObject, ThrowableTimeout);
-	        _hasBeenThrown = true;
-	        transform.parent = null;
-	        rb.isKinematic = false;
-	        rb.useGravity = true;
+	    //if (_canStartThrow)
+	    //{
+	    //    _canStartThrow = false;
+     //       Rigidbody rb = GetComponent<Rigidbody>();
+     //       Debug.Log($"Throwing {rb.name}");
+     //       Destroy(gameObject, ThrowableTimeout);
+	    //    _hasBeenThrown = true;
+	    //    transform.parent = null;
+	    //    rb.isKinematic = false;
+	    //    rb.useGravity = true;
 
-            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
-	        Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
-	        lookPos = lookPos - transform.position;
-            Vector3 lookPos2D = new Vector3(lookPos.x, 0, lookPos.z).normalized;
+     //       Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
+	    //    Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
+	    //    lookPos = lookPos - transform.position;
+     //       Vector3 lookPos2D = new Vector3(lookPos.x, 0, lookPos.z).normalized;
+            
+     //       rb.AddForce(15*lookPos2D, ForceMode.VelocityChange);
+     //       rb.angularVelocity = new Vector3(500,0,0);
 
-	        StartCoroutine(CreateNewThrowable());
 
-            rb.velocity = 15 * lookPos2D;
-            rb.angularVelocity = new Vector3(500,0,0);
-
-            Debug.Log($"velocity: {rb.velocity}");
-	        
-	    }
+     //   }
 	}
 
-    private IEnumerator CreateNewThrowable()
+
+    private Vector3 CopyVector3(Vector3 input)
     {
-        GameObject clone = Instantiate(this.transform, this.transform.position, this.transform.rotation).gameObject;
-        clone.transform.parent = GameObject.FindGameObjectWithTag("ThrowingHand").transform;
-        yield return new WaitForSeconds(.1f);
+        return new Vector3(input.x, input.y, input.z);
+    }
+    private Quaternion CopyQuaternion(Quaternion input)
+    {
+        return new Quaternion(input.x, input.y, input.z, input.w);
     }
 }
