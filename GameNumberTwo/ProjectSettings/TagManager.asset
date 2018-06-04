@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ThrowingHand
+  - ThrowPoint
   layers:
   - Default
   - TransparentFX

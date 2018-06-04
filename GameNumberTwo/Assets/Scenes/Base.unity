@@ -1338,8 +1338,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThrowableParent: {fileID: 1575785343}
-  ThrowablePrefab: {fileID: 4362100170184910, guid: 103f80ac3dbbe19429170b8a6f77b546,
-    type: 2}
+  ThrowableWeapons:
+  - Index: 0
+    ThrowForce: 15
+    AngularForce: 500
+    FireRate: 10
+    Prefab: {fileID: 4362100170184910, guid: 103f80ac3dbbe19429170b8a6f77b546, type: 2}
+    Instance: {fileID: 0}
+  - Index: 1
+    ThrowForce: 80
+    AngularForce: 50
+    FireRate: 3
+    Prefab: {fileID: 4362100170184910, guid: 103f80ac3dbbe19429170b8a6f77b546, type: 2}
+    Instance: {fileID: 0}
+  - Index: 2
+    ThrowForce: 0
+    AngularForce: 0
+    FireRate: 0
+    Prefab: {fileID: 0}
+    Instance: {fileID: 0}
   ThrowableTimeout: 5
 --- !u!1 &807541909
 GameObject:
