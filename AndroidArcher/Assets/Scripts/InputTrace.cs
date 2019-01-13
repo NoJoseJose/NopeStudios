@@ -16,7 +16,7 @@ public class InputTrace : MonoBehaviour
 
     public float arrowMult = 1.0f;
     public float lifetime = 5.0f;
-    public float maxDraw = 15f;
+    public float maxDraw = 30f;
     public GameObject heroProtagonist;
 
     // Start is called before the first frame update
@@ -33,9 +33,9 @@ public class InputTrace : MonoBehaviour
         LayerMask plane = LayerMask.GetMask("Input");
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000.0f, plane))
         {
-            Vector3 diffVector = startPos - currentHit;
+            Vector3 diffVector = startPos - hit.point;
             if (endPos != Vector3.zero && diffVector.magnitude > maxDraw)
-                currentHit = startPos + diffVector.normalized * 15;
+                currentHit = startPos - diffVector.normalized * maxDraw;
             else
                 currentHit = hit.point;
         }

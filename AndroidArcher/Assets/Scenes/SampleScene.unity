@@ -577,6 +577,7 @@ MonoBehaviour:
   currentArrow: {fileID: 0}
   arrowMult: 1.5
   lifetime: 3
+  maxDraw: 30
   heroProtagonist: {fileID: 76040740}
 --- !u!64 &1789825375
 MeshCollider:
