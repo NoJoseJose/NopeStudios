@@ -53,9 +53,12 @@ public class InputTrace : MonoBehaviour
             holding = false;
             arrowSpawned = false;
             endPos = currentHit;
-            Fire(startPos, endPos);
-            startPos = Vector3.zero;
-            endPos = Vector3.zero;
+            if (arrowSpawned)
+            {
+                Fire(startPos, endPos);
+                startPos = Vector3.zero;
+                endPos = Vector3.zero;
+            }
         }
         else if(holding)
         {
