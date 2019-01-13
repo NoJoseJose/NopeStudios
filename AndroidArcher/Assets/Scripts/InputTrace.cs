@@ -14,6 +14,7 @@ public class InputTrace : MonoBehaviour
     public Rigidbody currentArrow;
 
     public float arrowMult = 1.0f;
+    public float lifetime = 5.0f;
     public GameObject heroProtagonist;
 
     // Start is called before the first frame update
@@ -66,6 +67,7 @@ public class InputTrace : MonoBehaviour
         currentArrow.isKinematic = false;
         //NOPE currentArrow.velocity = transform.TransformDirection(velocityVector * 1);
         currentArrow.velocity = velocityVector * arrowMult;
+        Destroy(currentArrow.gameObject, lifetime);
     }
     private void SpawnArrow()
     {
