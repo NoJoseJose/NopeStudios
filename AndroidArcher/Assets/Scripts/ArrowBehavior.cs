@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArrowBehavior : MonoBehaviour
 {
     Rigidbody arrowBody;
+    bool isFlying = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,24 @@ public class ArrowBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isFlying)
+        {
+            arrowBody.AddTorque(Vector3.Cross(arrowBody.transform.forward, arrowBody.velocity), ForceMode.Force);
+        }
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        ContactPoint contact = collision.contacts[0];
+        if(Mathf.Abs(Vector3.Dot(contact.normal, arrowBody.transform.forward))> 0.5)
+        {
+            this.transform.parent = collision.gameObject.transform;
+
+            isFlying = false;
+            Destroy(arrowBody);
+        }
+
         
-        
-        arrowBody.AddTorque(Vector3.Cross(arrowBody.transform.forward, arrowBody.velocity), ForceMode.Force);
     }
 }
