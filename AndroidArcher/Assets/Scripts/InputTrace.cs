@@ -10,7 +10,8 @@ public class InputTrace : MonoBehaviour
 
     public GameObject startThing;
     public GameObject endThing;
-    public GameObject currentArrow;
+    public Rigidbody Arrow;
+    public Rigidbody currentArrow;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,7 @@ public class InputTrace : MonoBehaviour
             //fire
             holding = false;
             endPos = currentHit;
+            Fire(startPos, endPos);
         }
         else if(holding)
         {
@@ -57,10 +59,12 @@ public class InputTrace : MonoBehaviour
 
     private void Fire(Vector3 startpos, Vector3 endPos)
     {
-
+        Vector3 velocityVector = startpos - endPos;
+        currentArrow.isKinematic = false;
+        currentArrow.velocity = transform.TransformDirection(velocityVector * 1);
     }
     private void SpawnArrow()
     {
-        currentArrow = GameObject.Instantiate();
+        currentArrow = Instantiate(Arrow, transform.position, transform.rotation);
     }
 }
