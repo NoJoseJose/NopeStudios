@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InputTrace : MonoBehaviour
 {
-    public bool holding = false;
+    private bool holding = false;
+    private bool arrowSpawned = false;
     public Vector3 startPos = Vector3.zero;
     public Vector3 endPos = Vector3.zero;
 
@@ -15,6 +16,7 @@ public class InputTrace : MonoBehaviour
 
     public float arrowMult = 1.0f;
     public float lifetime = 5.0f;
+    public float maxDraw = 15f;
     public GameObject heroProtagonist;
 
     // Start is called before the first frame update
@@ -31,8 +33,11 @@ public class InputTrace : MonoBehaviour
         LayerMask plane = LayerMask.GetMask("Input");
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000.0f, plane))
         {
-            
-            currentHit = hit.point;
+            Vector3 diffVector = startPos - currentHit;
+            if (endPos != Vector3.zero && diffVector.magnitude > maxDraw)
+                currentHit = startPos + diffVector.normalized * 15;
+            else
+                currentHit = hit.point;
         }
 
         if(Input.GetMouseButtonDown(0) && !holding)
@@ -40,15 +45,17 @@ public class InputTrace : MonoBehaviour
             //first press
             holding = true;
             startPos = currentHit;
-            SpawnArrow();
 
         }
         else if (Input.GetMouseButtonUp(0))
         {
             //fire
             holding = false;
+            arrowSpawned = false;
             endPos = currentHit;
             Fire(startPos, endPos);
+            startPos = Vector3.zero;
+            endPos = Vector3.zero;
         }
         else if(holding)
         {
@@ -59,6 +66,12 @@ public class InputTrace : MonoBehaviour
         //visuals
         startThing.transform.position = startPos;
         endThing.transform.position = endPos;
+        //Debug.Log($"{GetCoordinates(startThing)} , {GetCoordinates(endThing)}");
+    }
+
+    private string GetCoordinates(GameObject obj)
+    {
+        return $"{obj.transform.position.x}, {obj.transform.position.y}, {obj.transform.position.z}";
     }
 
     private void Fire(Vector3 startpos, Vector3 endPos)
@@ -71,17 +84,21 @@ public class InputTrace : MonoBehaviour
     }
     private void SpawnArrow()
     {
+        arrowSpawned = true;
         currentArrow = Instantiate(Arrow, heroProtagonist.transform.position, transform.rotation);
     }
     private void Aim(Vector3 startpos, Vector3 endpos)
     {
-        if((startPos - endPos).sqrMagnitude > 0.1)
+        if((startPos - endPos).sqrMagnitude > 0.02)
         {
+            if (!arrowSpawned)
+                SpawnArrow();
             currentArrow.transform.rotation = Quaternion.LookRotation(startPos - endPos, Vector3.up);
         }
         else
         {
-            currentArrow.transform.rotation = Quaternion.LookRotation(heroProtagonist.transform.forward);
+            if (arrowSpawned)
+                currentArrow.transform.rotation = Quaternion.LookRotation(heroProtagonist.transform.forward);
         }
     }
 }
