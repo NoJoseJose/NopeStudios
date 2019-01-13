@@ -140,7 +140,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 76040740}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -197,13 +197,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76040740}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -3.52, y: 5.4, z: 0.6154747}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,8 +483,10 @@ MonoBehaviour:
   endPos: {x: 0, y: 0, z: 0}
   startThing: {fileID: 1008819972}
   endThing: {fileID: 2101104706}
-  Arrow: {fileID: 4029510734814233597, guid: c8d5be383a6875a499bd5f4b92a67d63, type: 3}
+  Arrow: {fileID: 422601972022277118, guid: e99a907f518c86e41b2b622b302ada68, type: 3}
   currentArrow: {fileID: 0}
+  arrowMult: 1
+  heroProtagonist: {fileID: 76040740}
 --- !u!64 &1789825375
 MeshCollider:
   m_ObjectHideFlags: 0

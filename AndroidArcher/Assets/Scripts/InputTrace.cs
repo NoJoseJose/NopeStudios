@@ -13,6 +13,9 @@ public class InputTrace : MonoBehaviour
     public Rigidbody Arrow;
     public Rigidbody currentArrow;
 
+    public float arrowMult = 1.0f;
+    public GameObject heroProtagonist;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +53,7 @@ public class InputTrace : MonoBehaviour
         {
             //holding down
             endPos = currentHit;
-            
+            Aim(startPos, endPos);
         }       
         //visuals
         startThing.transform.position = startPos;
@@ -61,10 +64,22 @@ public class InputTrace : MonoBehaviour
     {
         Vector3 velocityVector = startpos - endPos;
         currentArrow.isKinematic = false;
-        currentArrow.velocity = transform.TransformDirection(velocityVector * 1);
+        //NOPE currentArrow.velocity = transform.TransformDirection(velocityVector * 1);
+        currentArrow.velocity = velocityVector * arrowMult;
     }
     private void SpawnArrow()
     {
-        currentArrow = Instantiate(Arrow, transform.position, transform.rotation);
+        currentArrow = Instantiate(Arrow, heroProtagonist.transform.position, transform.rotation);
+    }
+    private void Aim(Vector3 startpos, Vector3 endpos)
+    {
+        if((startPos - endPos).sqrMagnitude > 0.1)
+        {
+            currentArrow.transform.rotation = Quaternion.LookRotation(startPos - endPos, Vector3.up);
+        }
+        else
+        {
+            currentArrow.transform.rotation = Quaternion.LookRotation(heroProtagonist.transform.forward);
+        }
     }
 }
