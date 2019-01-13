@@ -10,6 +10,7 @@ public class InputTrace : MonoBehaviour
 
     public GameObject startThing;
     public GameObject endThing;
+    public GameObject currentArrow;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class InputTrace : MonoBehaviour
             //first press
             holding = true;
             startPos = currentHit;
+            SpawnArrow();
 
         }
         else if (Input.GetMouseButtonUp(0))
@@ -47,12 +49,18 @@ public class InputTrace : MonoBehaviour
             //holding down
             endPos = currentHit;
             
-        }
-        
-
+        }       
         //visuals
         startThing.transform.position = startPos;
         endThing.transform.position = endPos;
+    }
 
+    private void Fire(Vector3 startpos, Vector3 endPos)
+    {
+
+    }
+    private void SpawnArrow()
+    {
+        currentArrow = GameObject.Instantiate();
     }
 }
