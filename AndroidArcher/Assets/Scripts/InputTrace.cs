@@ -22,9 +22,10 @@ public class InputTrace : MonoBehaviour
     {
         Vector3 currentHit = Vector3.zero;
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 9, 1000))
+        LayerMask plane = LayerMask.GetMask("Input");
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000.0f, plane))
         {
-            //layermask 9 is input
+            
             currentHit = hit.point;
         }
 
