@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 197073780607806951}
   - component: {fileID: 197073780607806944}
   - component: {fileID: 7537647994505533895}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6114610926283751040}
   - component: {fileID: 1298402764613225795}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 6114610926283580064}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 2}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 6114610926283751044}
   - {fileID: 6114610926283751046}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6114610926283751044}
   - component: {fileID: 6114610926284521120}
   - component: {fileID: 6114610926285519968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 6114610926283751046}
   - component: {fileID: 6114610926284521122}
   - component: {fileID: 6114610926285519970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 6114610926283751048}
   - component: {fileID: 6114610926284521124}
   - component: {fileID: 6114610926285519972}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 6114610926283751050}
   - component: {fileID: 6114610926284521126}
   - component: {fileID: 6114610926285519974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 6114610926283751052}
   - component: {fileID: 6114610926284521128}
   - component: {fileID: 6114610926285519976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
