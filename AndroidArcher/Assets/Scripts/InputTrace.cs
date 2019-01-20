@@ -92,11 +92,14 @@ public class InputTrace : MonoBehaviour
     }
     private void Aim(Vector3 startpos, Vector3 endpos)
     {
-        if((startPos - endPos).sqrMagnitude > 0.02)
+        if ((startPos - endPos).sqrMagnitude > 0.02)
         {
             if (!arrowSpawned)
                 SpawnArrow();
-            currentArrow.transform.rotation = Quaternion.LookRotation(startPos - endPos, Vector3.up);
+            if (currentArrow)
+            {
+                currentArrow.transform.rotation = Quaternion.LookRotation(startPos - endPos, Vector3.up);
+            }
         }
         else
         {
