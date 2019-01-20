@@ -36,7 +36,12 @@ public class ArrowBehavior : MonoBehaviour
         if (colliderLayer == LayerMask.NameToLayer("Environment"))
             CheckIfPenetrated(contact, collidingObject);
         else if (colliderLayer == LayerMask.NameToLayer("EnemyActor"))
-            CheckIfPenetrated(contact, collidingObject);
+            CheckIfEnemyPenetrated(contact, collidingObject);
+    }
+
+    private void CheckIfEnemyPenetrated(ContactPoint contact, GameObject collidingObject)
+    {
+        CheckIfPenetrated(contact, collidingObject);
     }
 
     private void CheckIfPenetrated(ContactPoint contact, GameObject collidingObject)
