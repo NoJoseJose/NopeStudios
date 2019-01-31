@@ -7,6 +7,7 @@ public class ArrowBehavior : MonoBehaviour
     Rigidbody arrowBody;
     bool isFlying = true;
     float PenetrationAngle = 0.5f;
+    bool hasPenetrated = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,8 @@ public class ArrowBehavior : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (hasPenetrated)
+            return;
         ContactPoint contact = collision.contacts[0];
         var collidingObject = collision.gameObject;
         var colliderLayer = collision.gameObject.layer;
@@ -41,17 +44,27 @@ public class ArrowBehavior : MonoBehaviour
 
     private void CheckIfEnemyPenetrated(ContactPoint contact, GameObject collidingObject)
     {
-        CheckIfPenetrated(contact, collidingObject);
+        if (CheckIfPenetrated(contact, collidingObject))
+        {
+            //find parent root gameobject of collider
+
+            //send info to enemy manager
+            EnemyManager mgr = collidingObject.GetComponentInParent<EnemyManager>();
+            mgr.ReportHit();
+        }
     }
 
-    private void CheckIfPenetrated(ContactPoint contact, GameObject collidingObject)
+    private bool CheckIfPenetrated(ContactPoint contact, GameObject collidingObject)
     {
+        bool penetrated = false;
         if (Mathf.Abs(Vector3.Dot(contact.normal, arrowBody.transform.forward)) > PenetrationAngle)
         {
+            hasPenetrated = true;
+            penetrated = true;
             this.transform.parent = collidingObject.transform;
             isFlying = false;
             Destroy(arrowBody);
         }
-
+        return penetrated;
     }
 }

@@ -15,4 +15,9 @@ public class EnemyManager : MonoBehaviour
     {
         
     }
+
+    public void ReportHit()
+    {
+        Debug.Log("reported");
+    }
 }
