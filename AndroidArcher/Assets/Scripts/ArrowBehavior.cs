@@ -56,12 +56,16 @@ public class ArrowBehavior : MonoBehaviour
 
     private bool CheckIfPenetrated(ContactPoint contact, GameObject collidingObject)
     {
+        
         bool penetrated = false;
         if (Mathf.Abs(Vector3.Dot(contact.normal, arrowBody.transform.forward)) > PenetrationAngle)
         {
             hasPenetrated = true;
             penetrated = true;
-            this.transform.parent = collidingObject.transform;
+            GameObject arrowHolder = new GameObject("ArrowHolder");
+            
+            arrowHolder.transform.parent = collidingObject.transform;
+            this.transform.parent = arrowHolder.transform;
             isFlying = false;
             Destroy(arrowBody);
         }
