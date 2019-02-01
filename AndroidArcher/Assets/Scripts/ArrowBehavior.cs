@@ -39,10 +39,10 @@ public class ArrowBehavior : MonoBehaviour
         if (colliderLayer == LayerMask.NameToLayer("Environment"))
             CheckIfPenetrated(contact, collidingObject);
         else if (colliderLayer == LayerMask.NameToLayer("EnemyActor"))
-            CheckIfEnemyPenetrated(contact, collidingObject);
+            CheckIfEnemyPenetrated(contact, collidingObject, collision);
     }
 
-    private void CheckIfEnemyPenetrated(ContactPoint contact, GameObject collidingObject)
+    private void CheckIfEnemyPenetrated(ContactPoint contact, GameObject collidingObject, Collision collision)
     {
         if (CheckIfPenetrated(contact, collidingObject))
         {
@@ -50,7 +50,7 @@ public class ArrowBehavior : MonoBehaviour
 
             //send info to enemy manager
             EnemyManager mgr = collidingObject.GetComponentInParent<EnemyManager>();
-            mgr.ReportHit();
+            mgr.ReportHit(collidingObject, collision.relativeVelocity);
         }
     }
 
