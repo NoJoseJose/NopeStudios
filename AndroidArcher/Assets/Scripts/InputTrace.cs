@@ -79,7 +79,8 @@ public class InputTrace : MonoBehaviour
 
     private void Fire(Vector3 startpos, Vector3 endPos)
     {
-        Vector3 velocityVector = startpos - endPos;
+        //normalize the velocity
+        Vector3 velocityVector = (startpos - endPos).normalized * maxDraw;
         currentArrow.isKinematic = false;
         //NOPE currentArrow.velocity = transform.TransformDirection(velocityVector * 1);
         currentArrow.velocity = velocityVector * arrowMult;

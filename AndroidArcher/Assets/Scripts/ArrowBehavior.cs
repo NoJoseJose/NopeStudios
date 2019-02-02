@@ -63,6 +63,10 @@ public class ArrowBehavior : MonoBehaviour
             hasPenetrated = true;
             penetrated = true;
             GameObject arrowHolder = new GameObject("ArrowHolder");
+
+            //remove collider
+            CapsuleCollider collider = gameObject.GetComponentInChildren<CapsuleCollider>();
+            collider.enabled = false;
             
             arrowHolder.transform.parent = collidingObject.transform;
             this.transform.parent = arrowHolder.transform;
