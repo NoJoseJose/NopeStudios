@@ -839,7 +839,7 @@ MonoBehaviour:
   endThing: {fileID: 2101104706}
   Arrow: {fileID: 197073780607806944, guid: 96fd16af5a950cb47a4761ef18ea6d0f, type: 3}
   currentArrow: {fileID: 0}
-  arrowMult: 2
+  arrowMult: 3
   lifetime: 30
   maxDraw: 30
   heroProtagonist: {fileID: 76040740}

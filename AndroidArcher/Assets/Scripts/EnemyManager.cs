@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
 
     public void ReportHit(GameObject collidingObject, Vector3 collisionVel)
     {
-        Debug.Log("reported");
+        //Debug.Log("reported");
         Explode(collidingObject, collisionVel);
     }
 
@@ -41,9 +41,10 @@ public class EnemyManager : MonoBehaviour
 
         }
         Destroy(bit, 30f);
-        Destroy(collidingObject, 0.0f);
+        //Destroy(collidingObject, 0.0f);
+        
         //make the gameobject a ragdoll layer
-        SetLayerRecursively(gameObject, LayerMask.NameToLayer("Ragdoll"));
+        RagdollRecursively(gameObject, LayerMask.NameToLayer("Ragdoll"));
         //if There's a move script, let's stop the force
         EnemyMove move = gameObject.GetComponentInChildren<EnemyMove>();
         if (move != null)
@@ -51,7 +52,7 @@ public class EnemyManager : MonoBehaviour
             move.StopMovement();
         }
     }
-    void SetLayerRecursively(GameObject obj, int newLayer)
+    void RagdollRecursively(GameObject obj, int newLayer)
     {
         if (null == obj)
         {
@@ -59,6 +60,22 @@ public class EnemyManager : MonoBehaviour
         }
 
         obj.layer = newLayer;
+        ConfigurableJoint joint = obj.GetComponent<ConfigurableJoint>();
+        if(joint != null)
+        {
+            JointDrive springX = joint.angularXDrive;
+            JointDrive springYZ = joint.angularYZDrive;
+            
+            springX.positionSpring = 0;
+            springYZ.positionSpring = 0;
+            joint.angularXDrive = springX;
+            joint.angularYZDrive = springYZ;
+        }
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if(rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
 
         foreach (Transform child in obj.transform)
         {
@@ -66,7 +83,7 @@ public class EnemyManager : MonoBehaviour
             {
                 continue;
             }
-            SetLayerRecursively(child.gameObject, newLayer);
+            RagdollRecursively(child.gameObject, newLayer);
         }
     }
 
