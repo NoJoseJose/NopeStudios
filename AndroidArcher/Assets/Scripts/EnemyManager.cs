@@ -42,6 +42,8 @@ public class EnemyManager : MonoBehaviour
         }
         Destroy(bit, 30f);
         Destroy(collidingObject, 0.0f);
+        //make the gameobject a ragdoll layer
+        SetLayerRecursively(gameObject, LayerMask.NameToLayer("Ragdoll"));
         //if There's a move script, let's stop the force
         EnemyMove move = gameObject.GetComponentInChildren<EnemyMove>();
         if (move != null)
@@ -49,4 +51,23 @@ public class EnemyManager : MonoBehaviour
             move.StopMovement();
         }
     }
+    void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (null == obj)
+        {
+            return;
+        }
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
+    }
+
 }
