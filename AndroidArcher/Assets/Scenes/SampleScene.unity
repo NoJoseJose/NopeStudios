@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 76040742}
   - component: {fileID: 76040745}
   - component: {fileID: 76040741}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 195227804}
   - component: {fileID: 195227803}
   - component: {fileID: 195227807}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,6 +511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyRig
       objectReference: {fileID: 0}
+    - target: {fileID: 3883077533868742170, guid: 498cb0b59df8603418618051ffc69743,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3883077533868742171, guid: 498cb0b59df8603418618051ffc69743,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -600,6 +605,16 @@ PrefabInstance:
         type: 3}
       propertyPath: moveForce
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883077534137625085, guid: 498cb0b59df8603418618051ffc69743,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883077533826670087, guid: 498cb0b59df8603418618051ffc69743,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498cb0b59df8603418618051ffc69743, type: 3}
@@ -706,7 +721,7 @@ GameObject:
   - component: {fileID: 1016280992}
   - component: {fileID: 1016280991}
   - component: {fileID: 1016280990}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -17,9 +17,9 @@ TagManager:
   - Input
   - FriendlyProjectile
   - EnemyActor
-  - 
-  - 
-  - 
+  - Ragdoll
+  - Environment
+  - PlayerActor
   - 
   - 
   - 
