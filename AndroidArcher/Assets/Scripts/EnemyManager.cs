@@ -41,6 +41,12 @@ public class EnemyManager : MonoBehaviour
 
         }
         Destroy(bit, 30f);
-        Destroy(transform.parent.gameObject, 0.0f);
+        Destroy(collidingObject, 0.0f);
+        //if There's a move script, let's stop the force
+        EnemyMove move = gameObject.GetComponentInChildren<EnemyMove>();
+        if (move != null)
+        {
+            move.StopMovement();
+        }
     }
 }
