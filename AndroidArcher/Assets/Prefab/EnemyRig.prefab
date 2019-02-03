@@ -642,3 +642,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubelet: {fileID: 198518, guid: 86154bec0ecc0644580f2333e696cb26, type: 3}
   echsplode: {fileID: 126074, guid: 1dc5aaed268725e409469ace57d9f26a, type: 3}
+  gameManager: {fileID: 0}

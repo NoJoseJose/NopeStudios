@@ -1045,6 +1045,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7803563495610321374, guid: 498cb0b59df8603418618051ffc69743,
     type: 3}
   spawnInterval: 2
+  moveTarget: {fileID: 195227807}
+  gameManager: {fileID: 1789825379}
 --- !u!1 &1789825373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,5 +1341,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 195227807}
+    - target: {fileID: 7803563495610321372, guid: 498cb0b59df8603418618051ffc69743,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1789825379}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498cb0b59df8603418618051ffc69743, type: 3}

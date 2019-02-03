@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
     public GameObject cubelet;
     public GameObject echsplode;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,8 @@ public class EnemyManager : MonoBehaviour
         //Debug.Log("reported");
         Explode(collidingObject, collisionVel);
         //Report kill to GameManager
-        GameManager gm = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameManager>();
-        gm.ReportKill(false);
+        //GameManager gm = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameManager>();
+        gameManager.ReportKill(false);
 
     }
 

@@ -7,6 +7,9 @@ public class EnemySpawn : MonoBehaviour
     public GameObject enemyPrefab;
     float timeTotal = 0.0f;
     public int spawnInterval = 2;
+
+    public Rigidbody moveTarget;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,9 @@ public class EnemySpawn : MonoBehaviour
     {
         if(timeTotal > spawnInterval)
         {
-            Instantiate(enemyPrefab, this.transform.position, this.transform.rotation);
+            GameObject newDude = Instantiate(enemyPrefab, this.transform.position, this.transform.rotation);
+            newDude.GetComponent<EnemyManager>().gameManager = gameManager;
+            newDude.GetComponentInChildren<EnemyMove>().target = moveTarget;
             timeTotal = 0.0f;
         }
         timeTotal += Time.deltaTime;
