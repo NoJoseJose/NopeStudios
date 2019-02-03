@@ -22,6 +22,10 @@ public class EnemyManager : MonoBehaviour
     {
         //Debug.Log("reported");
         Explode(collidingObject, collisionVel);
+        //Report kill to GameManager
+        GameManager gm = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameManager>();
+        gm.ReportKill(false);
+
     }
 
     private void Explode(GameObject collidingObject, Vector3 collisionVel)
