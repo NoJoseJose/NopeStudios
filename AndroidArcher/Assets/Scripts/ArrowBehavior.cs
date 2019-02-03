@@ -7,7 +7,10 @@ public class ArrowBehavior : MonoBehaviour
     Rigidbody arrowBody;
     bool isFlying = true;
     float PenetrationAngle = 0.5f;
+    float torqueMult = 5.0f;
     bool hasPenetrated = false;
+    Vector3 impactNormal;
+    bool actualHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,7 @@ public class ArrowBehavior : MonoBehaviour
     {
         if (isFlying)
         {
-            arrowBody.AddTorque(Vector3.Cross(arrowBody.transform.forward, arrowBody.velocity), ForceMode.Force);
+            arrowBody.AddTorque(Vector3.Cross(arrowBody.transform.forward, arrowBody.velocity) * torqueMult, ForceMode.Force);
         }
 
     }
@@ -56,10 +59,17 @@ public class ArrowBehavior : MonoBehaviour
 
     private bool CheckIfPenetrated(ContactPoint contact, GameObject collidingObject)
     {
+        float penetrationMod = PenetrationAngle;
+        if (collidingObject.name == "HeadBall")
+        {
+            penetrationMod *= 0.5f;
+        }
         
         bool penetrated = false;
-        if (Mathf.Abs(Vector3.Dot(contact.normal, arrowBody.transform.forward)) > PenetrationAngle)
-        {
+        //if (Mathf.Abs(Vector3.Dot(contact.normal, arrowBody.transform.forward)) > penetrationMod)
+        { 
+  
+            impactNormal = contact.normal;
             hasPenetrated = true;
             penetrated = true;
             GameObject arrowHolder = new GameObject("ArrowHolder");
@@ -74,5 +84,16 @@ public class ArrowBehavior : MonoBehaviour
             Destroy(arrowBody);
         }
         return penetrated;
+    }
+    void OnDrawGizmos()
+    {
+        if(hasPenetrated)
+        {
+            Gizmos.color = Color.green;
+            if (actualHit)
+                Gizmos.color = Color.yellow;
+            
+            Gizmos.DrawRay(this.transform.position, impactNormal);
+        }
     }
 }

@@ -25,7 +25,14 @@ public class EnemyManager : MonoBehaviour
         Explode(collidingObject, collisionVel);
         //Report kill to GameManager
         //GameManager gm = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GameManager>();
-        gameManager.ReportKill(false);
+        
+        if(collidingObject.name == "HeadBall")
+        {
+            gameManager.ReportKill(true);
+        }
+        else
+            gameManager.ReportKill(false);
+        
 
     }
 
