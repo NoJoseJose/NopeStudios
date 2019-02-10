@@ -388,12 +388,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &302721809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1969145986120274, guid: f95d1a9483a8c6a4496c281ffd93702c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1580502614}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +615,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840785885}
   m_CullTransparentMesh: 0
+--- !u!1 &845999720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1537864910903968, guid: f95d1a9483a8c6a4496c281ffd93702c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1580502614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &975966547
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ Transform:
   m_GameObject: {fileID: 975966547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 10}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 1119346740}
   m_RootOrder: 0
@@ -1002,6 +1002,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4445584750326018, guid: f95d1a9483a8c6a4496c281ffd93702c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082707841853144, guid: f95d1a9483a8c6a4496c281ffd93702c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1128142008451916, guid: f95d1a9483a8c6a4496c281ffd93702c, type: 3}
@@ -1385,10 +1390,10 @@ MonoBehaviour:
   endThing: {fileID: 2101104706}
   Arrow: {fileID: 197073780607806944, guid: 96fd16af5a950cb47a4761ef18ea6d0f, type: 3}
   currentArrow: {fileID: 0}
-  arrowMult: 0.5
+  arrowMult: 1
   lifetime: 30
   maxDraw: 30
-  heroProtagonist: {fileID: 302721809}
+  heroProtagonist: {fileID: 845999720}
 --- !u!64 &1789825375
 MeshCollider:
   m_ObjectHideFlags: 0
