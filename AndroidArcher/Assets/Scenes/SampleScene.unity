@@ -940,8 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00ec6afc29e0ea45a06e7763ea34e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7803563495610321374, guid: 498cb0b59df8603418618051ffc69743,
-    type: 3}
+  enemyPrefab: {fileID: 451896017, guid: bbce0d54d7df39446b8b590b843f0fc1, type: 3}
   spawnInterval: 4
   moveTarget: {fileID: 195227807}
   gameManager: {fileID: 1789825379}
@@ -957,6 +956,10 @@ PrefabInstance:
       value: knigthprefab
       objectReference: {fileID: 0}
     - target: {fileID: 1969145986120274, guid: f95d1a9483a8c6a4496c281ffd93702c, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537864910903968, guid: f95d1a9483a8c6a4496c281ffd93702c, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
@@ -1074,10 +1077,6 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1883974713408950, guid: f95d1a9483a8c6a4496c281ffd93702c, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1537864910903968, guid: f95d1a9483a8c6a4496c281ffd93702c, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
