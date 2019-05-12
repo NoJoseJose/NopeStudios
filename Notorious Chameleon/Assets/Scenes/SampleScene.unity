@@ -342,6 +342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spearman
       objectReference: {fileID: 0}
+    - target: {fileID: 7426534762907496917, guid: 09541fd4850a41742ab8053a3122a662,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthUICanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 1425447474347332409, guid: 09541fd4850a41742ab8053a3122a662,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,6 +471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736865224036532979, guid: 09541fd4850a41742ab8053a3122a662,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09541fd4850a41742ab8053a3122a662, type: 3}
@@ -627,6 +637,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1667016307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 542641546246132487, guid: 09541fd4850a41742ab8053a3122a662,
+    type: 3}
+  m_PrefabInstance: {fileID: 1365320358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1667016308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667016307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e231e6a4624cfe147a41aea2d11c661c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1821350593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5955084926829727033, guid: d45bbbe6ba96bab4892937aad574f58d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5955084927368575118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1821350594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821350593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc68913c186d1b42bf64753eae1e6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5955084927368575118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -639,10 +685,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spearman
       objectReference: {fileID: 0}
+    - target: {fileID: 5955084926829727033, guid: d45bbbe6ba96bab4892937aad574f58d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6160215125597935970, guid: d45bbbe6ba96bab4892937aad574f58d,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160215125597935970, guid: d45bbbe6ba96bab4892937aad574f58d,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthUICanvas
       objectReference: {fileID: 0}
     - target: {fileID: 5955084926829727026, guid: d45bbbe6ba96bab4892937aad574f58d,
         type: 3}
@@ -724,6 +780,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5955084926829727030, guid: d45bbbe6ba96bab4892937aad574f58d,
+        type: 3}
+      propertyPath: maxTurnTorque
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955084926829727027, guid: d45bbbe6ba96bab4892937aad574f58d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8025430030734953166, guid: d45bbbe6ba96bab4892937aad574f58d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -767,6 +833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpearmanSim
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936815073118810828, guid: e88d91d4603df3b4693015f0fcb246b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5936815073118810823, guid: e88d91d4603df3b4693015f0fcb246b3,
         type: 3}
