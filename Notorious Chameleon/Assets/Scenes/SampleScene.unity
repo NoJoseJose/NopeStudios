@@ -312,6 +312,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &862162762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5144844429576969207, guid: d45bbbe6ba96bab4892937aad574f58d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5955084927368575118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1127125353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7426534762907496917, guid: 09541fd4850a41742ab8053a3122a662,
@@ -330,6 +336,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb540e2f1b5244341b7d9c66e40765eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1136049933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1425447474347332402, guid: 09541fd4850a41742ab8053a3122a662,
+    type: 3}
+  m_PrefabInstance: {fileID: 1365320358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1136049934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136049933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc68913c186d1b42bf64753eae1e6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 10
+  HealthSlider: {fileID: 1694648661}
+  HealthText: {fileID: 1667016307}
 --- !u!1001 &1365320358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,6 +682,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e231e6a4624cfe147a41aea2d11c661c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1694648661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2873446383381050204, guid: 09541fd4850a41742ab8053a3122a662,
+    type: 3}
+  m_PrefabInstance: {fileID: 1365320358}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1821350593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5955084926829727033, guid: d45bbbe6ba96bab4892937aad574f58d,
@@ -673,6 +706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc68913c186d1b42bf64753eae1e6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 10
+  HealthSlider: {fileID: 862162762}
+  HealthText: {fileID: 1667016307}
 --- !u!1001 &5955084927368575118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -819,6 +855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955084927577917625, guid: d45bbbe6ba96bab4892937aad574f58d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45bbbe6ba96bab4892937aad574f58d, type: 3}
