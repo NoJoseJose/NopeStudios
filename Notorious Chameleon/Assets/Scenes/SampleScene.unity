@@ -354,6 +354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc68913c186d1b42bf64753eae1e6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubelet: {fileID: 198518, guid: 86154bec0ecc0644580f2333e696cb26, type: 3}
+  echsplode: {fileID: 126074, guid: 1dc5aaed268725e409469ace57d9f26a, type: 3}
   MaxHealth: 10
   HealthSlider: {fileID: 1694648661}
   HealthText: {fileID: 1667016307}
@@ -755,6 +757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc68913c186d1b42bf64753eae1e6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubelet: {fileID: 0}
+  echsplode: {fileID: 0}
   MaxHealth: 10
   HealthSlider: {fileID: 862162762}
   HealthText: {fileID: 1560578418}

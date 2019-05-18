@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
     private void Explode(GameObject collidingObject, Vector3 collisionVel)
     {
         //AudioSource.PlayClipAtPoint(echsplode, transform.position, 4.0f);
-        GameObject bit = (GameObject)Instantiate(cubelet, collidingObject.GetComponent<Rigidbody>().position, collidingObject.GetComponent<Rigidbody>().rotation);
-        GameObject echsploding = (GameObject)Instantiate(echsplode, collidingObject.GetComponent<Rigidbody>().position, collidingObject.GetComponent<Rigidbody>().rotation);
+        GameObject bit = (GameObject)Instantiate(cubelet, collidingObject.transform.position, collidingObject.transform.rotation);
+        GameObject echsploding = (GameObject)Instantiate(echsplode, collidingObject.transform.position, collidingObject.transform.rotation);
         Destroy(echsploding, 3.0f);
         Transform[] bits = bit.GetComponentsInChildren<Transform>();
         foreach (Transform t in bits)
