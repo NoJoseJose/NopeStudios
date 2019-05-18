@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         CurrentHealth = MaxHealth;
+        UpdateUIElements();
     }
 
     // Update is called once per frame
