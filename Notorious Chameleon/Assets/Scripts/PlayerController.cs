@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public GameObject cubelet;
     public GameObject echsplode;
     public float CurrentHealth { get; set; }
-    public float MaxHealth = 10f;
+    public float MaxHealth = 2f;
     public GameObject HealthSlider;
     public GameObject HealthText;
     // Start is called before the first frame update
@@ -25,22 +25,22 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void ReceiveDamage(float damageVal, GameObject collidingObject, Vector3 collisionvel)
+    public void ReceiveDamage(float damageVal, Vector3 collisionPosition, Vector3 collisionvel)
     {
         CurrentHealth -= damageVal;
         UpdateUIElements();
         if (CurrentHealth <= 0)
         {
-            Explode(collidingObject, collisionvel);
+            Explode(collisionPosition, collisionvel);
             Death();
         }
     }
 
-    private void Explode(GameObject collidingObject, Vector3 collisionVel)
+    private void Explode(Vector3 collisionPosition, Vector3 collisionVel)
     {
         //AudioSource.PlayClipAtPoint(echsplode, transform.position, 4.0f);
-        GameObject bit = (GameObject)Instantiate(cubelet, collidingObject.transform.position, collidingObject.transform.rotation);
-        GameObject echsploding = (GameObject)Instantiate(echsplode, collidingObject.transform.position, collidingObject.transform.rotation);
+        GameObject bit = (GameObject)Instantiate(cubelet, collisionPosition, new Quaternion());
+        GameObject echsploding = (GameObject)Instantiate(echsplode, collisionPosition, new Quaternion());
         Destroy(echsploding, 3.0f);
         Transform[] bits = bit.GetComponentsInChildren<Transform>();
         foreach (Transform t in bits)

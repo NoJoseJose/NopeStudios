@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
         if (hitTarget.tag == "Enemy")
         {
             PlayerController enemyController = hitTarget.GetComponent<PlayerController>();
-            enemyController.ReceiveDamage(1f, this.gameObject, this.transform.forward);
+            enemyController.ReceiveDamage(1f, other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position), this.transform.forward);
         }
     }
 }
