@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,7 +23,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("FireLB"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     public void ReceiveDamage(float damageVal, Vector3 collisionPosition, Vector3 collisionvel)
