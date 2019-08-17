@@ -9,13 +9,13 @@ public class PhysFollow : MonoBehaviour
     //Transform desired; //desired orientation
     Quaternion rotationalOffset; //springs start at some arbitrary offset, because models
     public Vector3 gimbalAxis = Vector3.up;
-    
+
     //assumption: The joint points at the lever.
 
-    public float Kp, Kd, Ki = 1;
+    //public float Kp = 0.05f;
     public GameObject target;
 
-
+    //Quaternion P;
 
     //Vector3 axis;
 
@@ -45,22 +45,37 @@ public class PhysFollow : MonoBehaviour
         var up = Vector3.Cross(forward, right).normalized;
         Quaternion worldToJointSpace = Quaternion.LookRotation(forward, up);
         */
-        joint.targetRotation = Quaternion.Inverse(Quaternion.Inverse(transform.parent.rotation) * Quaternion.LookRotation(transform.TransformPoint(joint.anchor) - target.transform.position, gimbalAxis) * rotationalOffset);
 
-        Debug.Log("target: " + joint.targetRotation + " actual: " + transform.rotation);
+        var rotation = Quaternion.LookRotation(transform.TransformPoint(joint.anchor) - target.transform.position, gimbalAxis) * rotationalOffset;
 
-        //joint.targetRotation *= Quaternion.Slerp(transform.rotation, joint.targetRotation)
-       
+        //this P is wrong, so it's currently zeroed out - fix this
+        //fix this
+        //fix this
+        //fix this
+        //fix this
+        //maybe change the target line instead
+        //P = Quaternion.LookRotation(transform.TransformPoint(joint.anchor) - transform.position, gimbalAxis) * Quaternion.Inverse(rotation);
+
+        
+        //rotation = Quaternion.Slerp(rotation, P, Kp);
+        //rotation *= Quaternion.SlerpUnclamped(P, Quaternion.Inverse(lastP), Kd/Time.fixedDeltaTime);
+
+
+        //lastP = P;
+        //convert to whatever nonsense space a joint uses
+        joint.targetRotation = Quaternion.Inverse(Quaternion.Inverse(transform.parent.rotation) * rotation);
+
     }
 
     void OnDrawGizmos()
     {
         if (joint)
         {
+            
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(transform.TransformPoint(joint.anchor), target.transform.position);
+            Gizmos.DrawRay(transform.TransformPoint(joint.anchor), Quaternion.LookRotation(target.transform.position - transform.TransformPoint(joint.anchor)) * Vector3.forward);
             Gizmos.color = Color.green;
-
+            Gizmos.DrawRay(transform.TransformPoint(joint.anchor), Quaternion.LookRotation(transform.position - transform.TransformPoint(joint.anchor)) * Vector3.forward);
 
         }
     }
