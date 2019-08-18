@@ -43,9 +43,10 @@ public class TwoJointSolve : MonoBehaviour
         //firstRotationalOffset = Quaternion.LookRotation(firstJoint.transform.position - endPoint.position);
 
         
-    //    firstRotationalAxis = Quaternion.LookRotation(firstJoint.transform.TransformVector(firstJoint.axis), firstJoint.transform.TransformVector(firstJoint.secondaryAxis));
+        
         
         firstRotationalOffset = Quaternion.LookRotation(endPoint.position - firstJoint.transform.position, firstJoint.transform.TransformVector(firstJoint.secondaryAxis));
+        
     }
 
     // Update is called once per frame
@@ -62,27 +63,16 @@ public class TwoJointSolve : MonoBehaviour
         //if the target is far enough away, both joints fully extend pointing at target. That's the easy part.
         //otherwise you need to find two angles. Or maybe just one. The elbow joint orientation determines primarily length; the shoulder joint determines direction
         //I'm also trying to make the restriction that the elbow can only rotate on one axis.
-        /*
-        Quaternion firstRotation = Quaternion.LookRotation(firstJoint.transform.TransformPoint(firstJoint.anchor) - target.position           
-            , firstJoint.transform.parent.transform.rotation * firstGimbalAxis);
+       
+        //nope
+        //firstRotationalAxis = Quaternion.LookRotation(firstJoint.transform.TransformVector(firstJoint.axis), firstJoint.transform.TransformVector(firstJoint.secondaryAxis));
+        //   firstRotationalAxis = Quaternion.LookRotation(firstJoint.transform.parent.forward, firstJoint.transform.parent.up);
 
-        firstRotation *= Quaternion.LookRotation(firstJoint.transform.rotation * pointAxis);
-        */
-
-        //ere   firstRotation *= Quaternion.Inverse(Quaternion.FromToRotation(firstJoint.transform.TransformVector(firstJoint.axis), firstJoint.transform.parent.rotation * pointAxis));
-
-
-        //works, technically
-        //Quaternion secondRotation = Quaternion.LookRotation(secondJoint.transform.TransformPoint(secondJoint.anchor) - target.position, secondJoint.transform.parent.transform.rotation * secondGimbalAxis) * secondRotationalOffset;
-
-
-        //secondDesiredVector = secondJoint.transform.TransformPoint(secondJoint.anchor) - target.position;
-        //secondDesiredGimbal = secondJoint.transform.parent.transform.rotation * secondGimbalAxis;
-        //Quaternion secondRotation = Quaternion.LookRotation(secondDesiredVector, secondDesiredGimbal) * secondRotationalOffset;
-
-        Quaternion firstRotation = Quaternion.LookRotation(target.position - firstJoint.transform.TransformPoint(firstJoint.anchor), firstJoint.transform.parent.rotation * firstGimbalAxis);
-
-
+        firstRotationalAxis = firstJoint.transform.parent.rotation;
+        
+        vv2 = firstRotationalAxis * Vector3.forward;
+        Quaternion firstRotation = Quaternion.LookRotation(target.position - firstJoint.transform.TransformPoint(firstJoint.anchor));
+        
         float angle, angle2;
         angle = 0.0f;
         angle2 = 0.0f;
@@ -101,13 +91,14 @@ public class TwoJointSolve : MonoBehaviour
         }
 
         //bend to allow close thing
-        firstRotation *= Quaternion.AngleAxis(angle, firstJoint.transform.parent.transform.rotation * elbowAxis); //this works
-        secondJoint.targetRotation = Quaternion.Inverse(Quaternion.AngleAxis(angle2, firstJoint.transform.parent.transform.rotation * -elbowAxis)); //also mostly works
+        ////firstRotation *= Quaternion.AngleAxis(angle, firstJoint.transform.parent.transform.rotation * elbowAxis); //this works
+        ////secondJoint.targetRotation = Quaternion.Inverse(Quaternion.AngleAxis(angle2, firstJoint.transform.parent.transform.rotation * -elbowAxis)); //also mostly works
 
-        firstRotation *= Quaternion.Inverse(firstRotationalOffset);
-        firstJoint.targetRotation = Quaternion.Inverse((firstJoint.transform.parent.rotation)  * firstRotation  ) ;
 
-        
+        firstJoint.targetRotation = Quaternion.Inverse(firstRotation) * firstRotationalAxis;
+        //firstJoint.targetRotation = Quaternion.Inverse(firstRotation);
+
+        vv1 = firstJoint.targetRotation * Vector3.forward;
 
 
         //joint.targetRotation = Quaternion.Inverse(Quaternion.Euler(new Vector3(x, y, z)));
@@ -127,7 +118,7 @@ public class TwoJointSolve : MonoBehaviour
         {
             
             Gizmos.color = Color.green;
-            Gizmos.DrawRay(secondJoint.transform.position, vv2 * 1.5f);
+            Gizmos.DrawRay(firstJoint.transform.position, vv2 * 1.5f);
         }
     }
 }
