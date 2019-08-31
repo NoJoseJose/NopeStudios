@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float MaxHealth = 2f;
     public GameObject HealthSlider;
     public GameObject HealthText;
+    public bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +31,13 @@ public class PlayerController : MonoBehaviour
 
     public void ReceiveDamage(float damageVal, Vector3 collisionPosition, Vector3 collisionvel)
     {
+        if (isDead)
+            return;
         CurrentHealth -= damageVal;
         UpdateUIElements();
         if (CurrentHealth <= 0)
         {
+            isDead = true;
             Explode(collisionPosition, collisionvel);
             Death();
         }
